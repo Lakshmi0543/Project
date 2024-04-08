@@ -22,7 +22,7 @@ ps aux
 
 5. Command to delete all files older than X days inside a specific directory:
 bash
-find /path/to/directory -type f -mtime +X -delete
+find /path/to/directory -type f -mtime +X -exec rm {} \;
 
 
 6. Shell script to identify the process ID:
