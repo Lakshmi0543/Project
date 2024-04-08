@@ -1,0 +1,95 @@
+### Linux:
+
+1. To create a directory inside a directory where the parent directory doesn't exist:
+bash
+mkdir -p parent_directory/new_directory
+
+
+2. To install a package on a Linux server without internet connection:
+   - Transfer the package file to the server via USB, network transfer, or any other means.
+   - Use the dpkg command to install the package:
+     bash
+     sudo dpkg -i package_file.deb
+     
+
+3. To access specific folders of Server A from Server B and Server C:
+   - Use SSHFS (SSH Filesystem) or NFS (Network File System) to mount the remote directory on Server B and Server C.
+
+4. To check all the running processes from a server:
+bash
+ps aux
+
+
+5. Command to delete all files older than X days inside a specific directory:
+bash
+find /path/to/directory -type f -mtime +X -delete
+
+
+6. Shell script to identify the process ID:
+bash
+#!/bin/bash
+
+read -p "Enter process ID: " pid
+
+if ps -p $pid > /dev/null; then
+    echo "Process ID: $pid"
+else
+    echo "Process doesn't exist"
+fi
+
+
+### Docker:
+
+1. Docker is a platform for developing, shipping, and running applications in containers, providing isolation and consistency across environments.
+
+2. Dockerfile for a sample Java/Python application:
+
+Dockerfile
+# Use an official Java/Python runtime as a parent image
+FROM openjdk:8-jre-alpine
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the application JAR or Python file into the container at /app
+COPY ./app.jar /app
+
+# Command to run the application
+CMD ["java", "-jar", "app.jar"]
+
+
+3. Docker lifecycle includes building images, creating containers, starting, stopping, and deleting containers, and managing images.
+
+4. Image is a lightweight, standalone, and executable software package that includes everything needed to run a piece of software, whereas a container is a runtime instance of an image.
+
+5. To check docker container logs:
+bash
+docker logs container_name_or_id
+
+
+### Kubernetes:
+
+1. Different types of services in Kubernetes include ClusterIP, NodePort, LoadBalancer, and ExternalName.
+
+2. A pod is the smallest deployable unit in Kubernetes, consisting of one or more containers, storage resources, and unique network IP.
+
+3. To create a pod with a custom image that restarts automatically:
+yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: my-container
+    image: custom_image:tag
+  restartPolicy: Always
+
+
+4. To access the custom application with a specific port, you can expose the pod using a Service with NodePort or LoadBalancer type, mapping the desired port to the pod's port.
+
+### CI/CD:
+
+1. For setting up a CI/CD pipeline, you can use tools like GitHub Actions, GitLab Runner, or Jenkins. Refer to the documentation of the chosen tool for detailed instructions.
+
+2. To automate spinning up a network and virtual machines, installing Nginx, and starting the service, you can use infrastructure-as-code tools like Terraform or cloud provider APIs along with configuration management tools like Ansible.
